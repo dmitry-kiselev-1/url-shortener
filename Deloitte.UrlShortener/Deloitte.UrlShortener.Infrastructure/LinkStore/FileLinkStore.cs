@@ -77,6 +77,6 @@ public sealed class FileLinkStore : ILinkStore
         if (string.IsNullOrWhiteSpace(code))
             return ValueTask.FromResult<Link?>(null);
 
-        return ValueTask.FromResult(_byCode.TryGetValue(code.Trim(), out var v) ? v : null);
+        return ValueTask.FromResult(_byCode.GetValueOrDefault(code.Trim()));
     }
 }
