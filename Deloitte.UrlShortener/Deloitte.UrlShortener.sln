@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.UrlShortener.Api", "Deloitte.UrlShortener.Api\Deloitte.UrlShortener.Api.csproj", "{81EB5181-F799-4B80-A454-AC8FAAF4202E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.UrlShortener.Application", "Deloitte.UrlShortener.Application\Deloitte.UrlShortener.Application.csproj", "{D52594E9-CB14-4110-A75B-E5FADC257A11}"
@@ -7,6 +6,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.UrlShortener.Domain", "Deloitte.UrlShortener.Domain\Deloitte.UrlShortener.Domain.csproj", "{D361C479-1029-4F27-A557-EB80D459EB20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.UrlShortener.Infrastructure", "Deloitte.UrlShortener.Infrastructure\Deloitte.UrlShortener.Infrastructure.csproj", "{FF34DEF5-E462-4A0C-B99D-7085A5D6810E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deloitte.UrlShortener.Api.Tests", "Deloitte.UrlShortener.Api.Tests\Deloitte.UrlShortener.Api.Tests.csproj", "{E4FFDC62-7CE4-41CB-B53D-7FAB40F66430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,7 +22,7 @@ Global
 		{D52594E9-CB14-4110-A75B-E5FADC257A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D52594E9-CB14-4110-A75B-E5FADC257A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52594E9-CB14-4110-A75B-E5FADC257A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D52594E9-CB14-4110-A75B-E5FADC257A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52594E9-CB14-4110-A75B-E5ADC257A11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D361C479-1029-4F27-A557-EB80D459EB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D361C479-1029-4F27-A557-EB80D459EB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D361C479-1029-4F27-A557-EB80D459EB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +31,9 @@ Global
 		{FF34DEF5-E462-4A0C-B99D-7085A5D6810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF34DEF5-E462-4A0C-B99D-7085A5D6810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF34DEF5-E462-4A0C-B99D-7085A5D6810E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4FFDC62-7CE4-41CB-B53D-7FAB40F66430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4FFDC62-7CE4-41CB-B53D-7FAB40F66430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4FFDC62-7CE4-41CB-B53D-7FAB40F66430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4FFDC62-7CE4-41CB-B53D-7FAB40F66430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
