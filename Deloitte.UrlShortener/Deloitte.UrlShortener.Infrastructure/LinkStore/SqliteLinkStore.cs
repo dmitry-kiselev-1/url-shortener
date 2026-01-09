@@ -131,10 +131,10 @@ public sealed class SqliteLinkStore : ILinkStore
 
             var demoLinks = new[]
             {
-                new Link("ab1", "https://www.google.com"),
-                new Link("ab2", "https://www.amazon.com"),
-                new Link("ab3", "https://example.com/page1/long/url"),
-                new Link("ab4", "https://another.com/this/is/a/very/long/one")
+                new Link("link1", "https://www.google.com"),
+                new Link("link2", "https://www.amazon.com"),
+                new Link("link3", "https://example.com/page1/long/url"),
+                new Link("link4", "https://another.com/this/is/a/very/long/one")
             };
 
             using var transaction = connection.BeginTransaction();

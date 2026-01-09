@@ -1,4 +1,4 @@
-﻿ab1 https://www.google.com
-ab2 https://www.amazon.com
-ab3 https://example.com/page1/long/url
-ab4 https://another.com/this/is/a/very/long/one
+﻿link1 https://www.google.com
+link2 https://www.amazon.com
+link3 https://example.com/page1/long/url
+link4 https://another.com/this/is/a/very/long/one
