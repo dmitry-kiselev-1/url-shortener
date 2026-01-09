@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
             .ValidateOnStart();
 
         // Singleton: loads file once at startup.
-        services.AddSingleton<ILinkStore, FileLinkStore>();
+        services.AddSingleton<ILinkStore, CachedFileLinkStore>();
 
         return services;
     }

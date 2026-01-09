@@ -7,6 +7,8 @@ using Microsoft.Extensions.Options;
 namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
 
 /// <summary>
+/// O(n) by aplication start to load all mappings into memory.
+/// O(1) per operation (dictionary lookup).
 /// File-backed store. Reads mappings once at start into memory.
 /// Each line format:
 ///   <code>CODE URL</code>
@@ -15,11 +17,11 @@ namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
 ///   abc https://example.com/page1/long/url
 ///   short https://another.com/this/is/a/very/long/one
 /// </summary>
-public sealed class FileLinkStore : ILinkStore
+public sealed class CachedFileLinkStore : ILinkStore
 {
     private readonly FrozenDictionary<string, Link> _byCode;
 
-    public FileLinkStore(IOptions<LinkStoreOptions> options, ILogger<FileLinkStore> logger)
+    public CachedFileLinkStore(IOptions<LinkStoreOptions> options, ILogger<CachedFileLinkStore> logger)
     {
         var path = options.Value.FilePath;
         if (string.IsNullOrWhiteSpace(path))
