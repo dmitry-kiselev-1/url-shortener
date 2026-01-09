@@ -1,8 +1,8 @@
-﻿namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
+﻿namespace Deloitte.UrlShortener.Infrastructure.LinkStore.Sqlite;
 
 public sealed class SqliteLinkStoreOptions
 {
-    public const string SectionName = "LinkStore:Sqlite";
+    public const string SectionName = "Infrastructure:LinkStore:Sqlite";
 
     public string? ConnectionString { get; init; }
 

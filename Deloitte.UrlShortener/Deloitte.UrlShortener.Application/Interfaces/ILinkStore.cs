@@ -1,6 +1,6 @@
 ﻿using Deloitte.UrlShortener.Domain;
 
-namespace Deloitte.UrlShortener.Application.Abstractions;
+namespace Deloitte.UrlShortener.Application.Interfaces;
 
 /// <summary>
 /// Port for retrieving short-link mappings.

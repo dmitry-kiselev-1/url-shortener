@@ -1,11 +1,11 @@
 ﻿using System.Data;
-using Deloitte.UrlShortener.Application.Abstractions;
+using Deloitte.UrlShortener.Application.Interfaces;
 using Deloitte.UrlShortener.Domain;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
+namespace Deloitte.UrlShortener.Infrastructure.LinkStore.Sqlite;
 
 /// <summary>
 /// SQLite-backed implementation of <see cref="ILinkStore"/>.

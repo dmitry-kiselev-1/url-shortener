@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Deloitte.UrlShortener.Api.Tests;
+namespace Deloitte.UrlShortener.Api.Tests.e2e;
 
 public class RedirectEndpointTests(WebApplicationFactory<Program> factory)
     : IClassFixture<WebApplicationFactory<Program>>

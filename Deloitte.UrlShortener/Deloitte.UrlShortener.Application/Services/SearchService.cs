@@ -1,4 +1,4 @@
-﻿using Deloitte.UrlShortener.Application.Abstractions;
+﻿using Deloitte.UrlShortener.Application.Interfaces;
 using Deloitte.UrlShortener.Application.Models;
 
 namespace Deloitte.UrlShortener.Application.Services;

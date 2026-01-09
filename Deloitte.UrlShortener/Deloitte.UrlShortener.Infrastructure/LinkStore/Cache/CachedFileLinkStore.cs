@@ -1,10 +1,10 @@
 ﻿using System.Collections.Frozen;
-using Deloitte.UrlShortener.Application.Abstractions;
+using Deloitte.UrlShortener.Application.Interfaces;
 using Deloitte.UrlShortener.Domain;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
+namespace Deloitte.UrlShortener.Infrastructure.LinkStore.Cache;
 
 /// <summary>
 /// O(n) by aplication start to load all mappings into memory.
@@ -21,7 +21,7 @@ public sealed class CachedFileLinkStore : ILinkStore
 {
     private readonly FrozenDictionary<string, Link> _byCode;
 
-    public CachedFileLinkStore(IOptions<LinkStoreOptions> options, ILogger<CachedFileLinkStore> logger)
+    public CachedFileLinkStore(IOptions<CachedFileLinkStoreOptions> options, ILogger<CachedFileLinkStore> logger)
     {
         var path = options.Value.FilePath;
         if (string.IsNullOrWhiteSpace(path))
