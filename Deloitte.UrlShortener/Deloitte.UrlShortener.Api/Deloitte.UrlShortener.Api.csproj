@@ -11,9 +11,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Deloitte.UrlShortener.Application\Deloitte.UrlShortener.Application.csproj" />
-      <ProjectReference Include="..\Deloitte.UrlShortener.Domain\Deloitte.UrlShortener.Domain.csproj" />
-      <ProjectReference Include="..\Deloitte.UrlShortener.Infrastructure\Deloitte.UrlShortener.Infrastructure.csproj" />
+      <ProjectReference Include="..\\Deloitte.UrlShortener.Application\\Deloitte.UrlShortener.Application.csproj" />
+      <ProjectReference Include="..\\Deloitte.UrlShortener.Domain\\Deloitte.UrlShortener.Domain.csproj" />
+      <ProjectReference Include="..\\Deloitte.UrlShortener.Infrastructure\\Deloitte.UrlShortener.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="shortlinks.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

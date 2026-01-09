@@ -1,0 +1,4 @@
+﻿# format: <code><whitespace><absolute_url>
+abc https://example.com/page1/long/url
+short https://another.com/this/is/a/very/long/one
+
