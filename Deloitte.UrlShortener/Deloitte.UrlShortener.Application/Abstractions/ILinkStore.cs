@@ -6,11 +6,11 @@ namespace Deloitte.UrlShortener.Application.Abstractions;
 /// Port for retrieving short-link mappings.
 /// Infrastructure provides the implementation (file, DB, etc.).
 /// </summary>
-public interface IShortLinkStore
+public interface ILinkStore
 {
     /// <summary>
     /// Returns a short-link mapping by its code, or <c>null</c> if not found.
     /// </summary>
-    ValueTask<ShortLink?> GetByCodeAsync(string code, CancellationToken cancellationToken = default);
+    ValueTask<Link?> SearchAsync(string code, CancellationToken cancellationToken = default);
 }
 

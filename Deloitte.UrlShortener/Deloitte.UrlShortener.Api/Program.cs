@@ -1,24 +1,26 @@
-using Deloitte.UrlShortener.Application.DependencyInjection;
-using Deloitte.UrlShortener.Application.Resolve;
-using Deloitte.UrlShortener.Infrastructure.DependencyInjection;
+using Deloitte.UrlShortener.Application.DI;
+using Deloitte.UrlShortener.Application.Services;
+using Deloitte.UrlShortener.Infrastructure.DI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Services
-builder.Services.AddOpenApi();
-builder.Services.AddUrlShortenerApplication();
-builder.Services.AddUrlShortenerInfrastructure(builder.Configuration);
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.UseHttpsRedirection();
 
-app.MapGet("/{code}", async (string code, ResolveShortCodeService resolver, CancellationToken ct) =>
+// Health check endpoint
+app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }))
+   .WithName("HealthCheck")
+   .WithSummary("Simple health check endpoint to verify that the API is running");
+
+// Redirect endpoint
+app.MapGet("/{code}", async (string code, SearchService searchService, CancellationToken ct) =>
 {
-    var result = await resolver.ResolveAsync(code, ct);
+    var result = await searchService.SearchAsync(code, ct);
 
     if (!result.Found)
         return Results.NotFound();
@@ -28,6 +30,11 @@ app.MapGet("/{code}", async (string code, ResolveShortCodeService resolver, Canc
 
     // Permanent Redirect: HTTP 308
     return Results.Redirect(result.Destination.ToString(), permanent: true);
-});
+})
+.WithName("ResolveShortCode")
+.WithSummary("Resolves a short code and permanently redirects to the destination URL")
+.Produces(StatusCodes.Status308PermanentRedirect)
+.Produces(StatusCodes.Status404NotFound)
+.Produces(StatusCodes.Status400BadRequest);
 
 app.Run();

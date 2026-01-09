@@ -4,7 +4,7 @@ using Deloitte.UrlShortener.Domain;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Deloitte.UrlShortener.Infrastructure.ShortLinkStore;
+namespace Deloitte.UrlShortener.Infrastructure.LinkStore;
 
 /// <summary>
 /// File-backed store. Reads mappings once at start into memory.
@@ -15,15 +15,15 @@ namespace Deloitte.UrlShortener.Infrastructure.ShortLinkStore;
 ///   abc https://example.com/page1/long/url
 ///   short https://another.com/this/is/a/very/long/one
 /// </summary>
-public sealed class FileShortLinkStore : IShortLinkStore
+public sealed class FileLinkStore : ILinkStore
 {
-    private readonly FrozenDictionary<string, ShortLink> _byCode;
+    private readonly FrozenDictionary<string, Link> _byCode;
 
-    public FileShortLinkStore(IOptions<ShortLinkStoreOptions> options, ILogger<FileShortLinkStore> logger)
+    public FileLinkStore(IOptions<LinkStoreOptions> options, ILogger<FileLinkStore> logger)
     {
         var path = options.Value.FilePath;
         if (string.IsNullOrWhiteSpace(path))
-            throw new InvalidOperationException("ShortLinkStore:FilePath must be configured.");
+            throw new InvalidOperationException("LinkStore:FilePath must be configured.");
 
         if (!Path.IsPathRooted(path!))
         {
@@ -34,7 +34,7 @@ public sealed class FileShortLinkStore : IShortLinkStore
         if (!File.Exists(path))
             throw new FileNotFoundException("Short link mapping file not found.", path);
 
-        var builder = new Dictionary<string, ShortLink>(StringComparer.OrdinalIgnoreCase);
+        var builder = new Dictionary<string, Link>(StringComparer.OrdinalIgnoreCase);
         var lines = File.ReadAllLines(path);
 
         for (var i = 0; i < lines.Length; i++)
@@ -56,10 +56,10 @@ public sealed class FileShortLinkStore : IShortLinkStore
 
             try
             {
-                var shortLink = new ShortLink(parts[0], parts[1]);
-                if (!builder.TryAdd(shortLink.Code, shortLink))
+                var link = new Link(parts[0], parts[1]);
+                if (!builder.TryAdd(link.Code, link))
                 {
-                    logger.LogWarning("Duplicate short code '{Code}' in {FilePath} (line {LineNumber}). Using first occurrence.", shortLink.Code, path, i + 1);
+                    logger.LogWarning("Duplicate short code '{Code}' in {FilePath} (line {LineNumber}). Using first occurrence.", link.Code, path, i + 1);
                 }
             }
             catch (Exception ex)
@@ -72,10 +72,10 @@ public sealed class FileShortLinkStore : IShortLinkStore
         logger.LogInformation("Loaded {Count} short link mappings from {FilePath}", _byCode.Count, path);
     }
 
-    public ValueTask<ShortLink?> GetByCodeAsync(string code, CancellationToken cancellationToken = default)
+    public ValueTask<Link?> SearchAsync(string code, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(code))
-            return ValueTask.FromResult<ShortLink?>(null);
+            return ValueTask.FromResult<Link?>(null);
 
         return ValueTask.FromResult(_byCode.TryGetValue(code.Trim(), out var v) ? v : null);
     }
