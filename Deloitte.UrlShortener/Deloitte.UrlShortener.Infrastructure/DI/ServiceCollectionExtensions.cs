@@ -14,10 +14,15 @@ public static class ServiceCollectionExtensions
             .Validate(o => !string.IsNullOrWhiteSpace(o.FilePath), "LinkStore:FilePath must be configured.")
             .ValidateOnStart();
 
-        // Singleton: loads file once at startup.
+        services.AddOptions<SqliteLinkStoreOptions>()
+            .Bind(configuration.GetSection(SqliteLinkStoreOptions.SectionName));
+
+        // File-based, cached in memory:
         services.AddSingleton<ILinkStore, CachedFileLinkStore>();
+        
+        // SQLite-based store with demo seeding:
+        // services.AddSingleton<ILinkStore, SqliteLinkStore>();
 
         return services;
     }
 }
-

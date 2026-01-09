@@ -6,4 +6,3 @@ public sealed class LinkStoreOptions
 
     public string FilePath { get; init; } = "links.txt";
 }
-
