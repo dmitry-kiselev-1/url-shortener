@@ -30,9 +30,13 @@ A small URL shortener implemented with a **Clean Architecture** layout:
 - `appsettings.json`:
 
   ```json
-  "LinkStore": {
-    "FilePath": "links.txt"
-  },
-  "LinkStore:Sqlite": {
-    "FilePath": "links.db"
+    "Infrastructure": {
+    "LinkStore": {
+      "Cache": {
+        "FilePath": "links.txt"
+      },
+      "Sqlite": {
+        "FilePath": "links.db"
+      }
+    }
   }
