@@ -4,7 +4,7 @@ A small URL shortener implemented with a **Clean Architecture** layout:
 
 - **Domain** – core entities.
 - **Application** – application logic, interfaces, and models.
-- **Infrastructure** – storage implementations and wiring.
+- **Infrastructure** – storage implementations.
 - **Api** – minimal HTTP API exposing redirect endpoints.
 - **Api.Tests** – end‑to‑end tests for the API.
 
